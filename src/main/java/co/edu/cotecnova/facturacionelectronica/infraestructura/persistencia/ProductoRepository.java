@@ -51,8 +51,8 @@ public class ProductoRepository implements ProductRepository {
     }
 
     @Override
-    public Optional<List<Product>> findByName(String name) {
-        Optional<List<Producto>> productos = productoCrudRepositorio.findByNombre(name);
-        return productos.map(prod -> productMapper.toProducts(prod));
+    public Optional<Product> findByCode(int code) {
+        Optional<Producto> producto = productoCrudRepositorio.findByCodigo(code);
+        return producto.map(prod -> productMapper.toProduct(prod));
     }
 }

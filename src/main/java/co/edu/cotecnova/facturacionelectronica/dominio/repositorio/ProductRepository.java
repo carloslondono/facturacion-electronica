@@ -11,5 +11,5 @@ public interface ProductRepository {
     Product save(Product product);
     void delete(int productId);
     Product update(Product product);
-    Optional<List<Product>> findByName(String name);
+    Optional<Product> findByCode(int code);
 }

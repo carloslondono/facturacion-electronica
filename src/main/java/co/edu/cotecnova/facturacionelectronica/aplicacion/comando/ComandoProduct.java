@@ -1,8 +1,8 @@
-package co.edu.cotecnova.facturacionelectronica.dominio.modelo;
+package co.edu.cotecnova.facturacionelectronica.aplicacion.comando;
 
 import java.time.LocalDateTime;
 
-public class Product {
+public class ComandoProduct {
     private int productId;
     private int code;
     private String name;
@@ -10,10 +10,10 @@ public class Product {
     private boolean active;
     private LocalDateTime creationDate;
 
-    public Product() {
+    public ComandoProduct() {
     }
 
-    public Product(int productId, int code, String name, double price, boolean active, LocalDateTime creationDate) {
+    public ComandoProduct(int productId, int code, String name, double price, boolean active, LocalDateTime creationDate) {
         this.productId = productId;
         this.code = code;
         this.name = name;

@@ -25,5 +25,6 @@ public interface ClientMapper {
     List<Client> toClients(List<Cliente> clientes);
 
     @InheritInverseConfiguration
+    @Mapping(target = "ventas", ignore = true)
     Cliente toCliente(Client client);
 }

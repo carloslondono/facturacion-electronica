@@ -2,6 +2,7 @@ package co.edu.cotecnova.facturacionelectronica.infraestructura.persistencia.ent
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "clientes")
@@ -18,6 +19,9 @@ public class Cliente {
     private Boolean estado;
     @Column(name = "fecha_creacion")
     private LocalDateTime fechaCreacion;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Venta> ventas;
 
     public Integer getId() {
         return id;
@@ -89,5 +93,13 @@ public class Cliente {
 
     public void setFechaCreacion(LocalDateTime fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
+    }
+
+    public List<Venta> getVentas() {
+        return ventas;
+    }
+
+    public void setVentas(List<Venta> ventas) {
+        this.ventas = ventas;
     }
 }

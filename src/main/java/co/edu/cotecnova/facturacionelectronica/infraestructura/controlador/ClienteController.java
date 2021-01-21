@@ -48,7 +48,7 @@ public class ClienteController {
     @PutMapping("/{id}")
     public ResponseEntity<Client> update(@RequestBody ComandoClient comandoClient, @PathVariable("id") int clientId){
         comandoClient.setClientId(clientId);
-        return new ResponseEntity<>(manejadorActualizarClient.ejecutar(comandoClient, clientId), HttpStatus.CREATED);
+        return new ResponseEntity<>(manejadorActualizarClient.ejecutar(comandoClient, clientId), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

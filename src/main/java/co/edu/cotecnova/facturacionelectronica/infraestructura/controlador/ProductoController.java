@@ -48,7 +48,7 @@ public class ProductoController {
     @PutMapping("/{id}")
     public ResponseEntity<Product> update(@RequestBody ComandoProduct comandoProduct,@PathVariable("id") int productId){
         comandoProduct.setProductId(productId);
-        return new ResponseEntity<>(manejadorActualizarProduct.ejecutar(comandoProduct, productId), HttpStatus.CREATED);
+        return new ResponseEntity<>(manejadorActualizarProduct.ejecutar(comandoProduct, productId), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

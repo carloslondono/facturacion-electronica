@@ -5,15 +5,17 @@ public class SaleProduct {
     private int productId;
     private int saleId;
     private int quantity;
+    private Product product;
 
     public SaleProduct() {
     }
 
-    public SaleProduct(int saleProductId, int productId, int saleId, int quantity) {
+    public SaleProduct(int saleProductId, int productId, int saleId, int quantity, Product product) {
         this.saleProductId = saleProductId;
         this.productId = productId;
         this.saleId = saleId;
         this.quantity = quantity;
+        this.product = product;
     }
 
     public int getSaleProductId() {
@@ -46,5 +48,13 @@ public class SaleProduct {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

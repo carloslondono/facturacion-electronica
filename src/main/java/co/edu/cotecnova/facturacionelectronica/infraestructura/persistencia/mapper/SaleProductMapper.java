@@ -14,8 +14,7 @@ public interface SaleProductMapper {
             @Mapping(source = "productoId", target = "productId"),
             @Mapping(source = "ventaId", target = "saleId"),
             @Mapping(source = "cantidad", target = "quantity"),
-
-
+            @Mapping(source = "producto", target = "product")
     })
     SaleProduct toSaleProduct(VentaProducto ventaProducto);
 

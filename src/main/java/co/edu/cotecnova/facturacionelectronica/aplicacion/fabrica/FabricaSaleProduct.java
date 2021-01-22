@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class FabricaSaleProduct {
     public SaleProduct crear(ComandoSaleProduct comandoSaleProduct){
-        return new SaleProduct(comandoSaleProduct.getSaleProductId(), comandoSaleProduct.getProductId(), comandoSaleProduct.getSaleId(), comandoSaleProduct.getQuantity());
+        return new SaleProduct(comandoSaleProduct.getSaleProductId(), comandoSaleProduct.getProductId(), comandoSaleProduct.getSaleId(), comandoSaleProduct.getQuantity(), comandoSaleProduct.getProduct());
     }
 }

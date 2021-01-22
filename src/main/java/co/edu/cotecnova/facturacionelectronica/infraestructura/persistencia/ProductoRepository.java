@@ -5,6 +5,8 @@ import co.edu.cotecnova.facturacionelectronica.dominio.repositorio.ProductReposi
 import co.edu.cotecnova.facturacionelectronica.infraestructura.persistencia.crud.ProductoCrudRepositorio;
 import co.edu.cotecnova.facturacionelectronica.infraestructura.persistencia.entidades.Producto;
 import co.edu.cotecnova.facturacionelectronica.infraestructura.persistencia.mapper.ProductMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -23,7 +25,7 @@ public class ProductoRepository implements ProductRepository {
 
     @Override
     public List<Product> getAll() {
-        List<Producto> productos = (List<Producto>) productoCrudRepositorio.findAll();
+        List<Producto> productos = (List<Producto>) productoCrudRepositorio.findByEstadoTrue();
         return productMapper.toProducts(productos);
     }
 
@@ -54,5 +56,10 @@ public class ProductoRepository implements ProductRepository {
     public Optional<Product> findByCode(int code) {
         Optional<Producto> producto = productoCrudRepositorio.findByCodigo(code);
         return producto.map(prod -> productMapper.toProduct(prod));
+    }
+
+    @Override
+    public Page<Product> findAll(Pageable pageable) {
+        return productoCrudRepositorio.findAll(pageable).map(producto -> productMapper.toProduct(producto));
     }
 }

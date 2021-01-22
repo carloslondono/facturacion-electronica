@@ -3,6 +3,8 @@ package co.edu.cotecnova.facturacionelectronica.dominio.servicio;
 import co.edu.cotecnova.facturacionelectronica.dominio.excepion.SaleException;
 import co.edu.cotecnova.facturacionelectronica.dominio.modelo.Sale;
 import co.edu.cotecnova.facturacionelectronica.dominio.repositorio.SaleRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,5 +52,9 @@ public class SaleService {
         }else{
             throw new SaleException(ID_NO_ENCONTRADO);
         }
+    }
+
+    public Page<Sale> findAll(Pageable pageable){
+        return saleRepository.findAll(pageable);
     }
 }

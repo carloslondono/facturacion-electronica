@@ -3,6 +3,8 @@ package co.edu.cotecnova.facturacionelectronica.dominio.servicio;
 import co.edu.cotecnova.facturacionelectronica.dominio.excepion.ProductExcepcion;
 import co.edu.cotecnova.facturacionelectronica.dominio.modelo.Product;
 import co.edu.cotecnova.facturacionelectronica.dominio.repositorio.ProductRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -59,5 +61,9 @@ public class ProductService {
         }else{
             throw new ProductExcepcion(ID_NO_ENCONTRADO);
         }
+    }
+
+    public Page<Product> findAll(Pageable pageable){
+        return productRepository.findAll(pageable);
     }
 }

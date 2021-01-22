@@ -3,6 +3,8 @@ package co.edu.cotecnova.facturacionelectronica.infraestructura.controlador;
 import co.edu.cotecnova.facturacionelectronica.aplicacion.comando.ComandoClient;
 import co.edu.cotecnova.facturacionelectronica.aplicacion.manejadores.client.*;
 import co.edu.cotecnova.facturacionelectronica.dominio.modelo.Client;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,18 +21,25 @@ public class ClienteController {
     private ManejadorEliminarClient manejadorEliminarClient;
     private ManejadorListarTodosClient manejadorListarTodosClient;
     private ManejadorListarPorIdClient manejadorListarPorIdClient;
+    private ManejadorPaginarClient manejadorPaginarClient;
 
-    public ClienteController(ManejadorCrearClient manejadorCrearClient, ManejadorActualizarClient manejadorActualizarClient, ManejadorEliminarClient manejadorEliminarClient, ManejadorListarTodosClient manejadorListarTodosClient, ManejadorListarPorIdClient manejadorListarPorIdClient) {
+    public ClienteController(ManejadorCrearClient manejadorCrearClient, ManejadorActualizarClient manejadorActualizarClient, ManejadorEliminarClient manejadorEliminarClient, ManejadorListarTodosClient manejadorListarTodosClient, ManejadorListarPorIdClient manejadorListarPorIdClient, ManejadorPaginarClient manejadorPaginarClient) {
         this.manejadorCrearClient = manejadorCrearClient;
         this.manejadorActualizarClient = manejadorActualizarClient;
         this.manejadorEliminarClient = manejadorEliminarClient;
         this.manejadorListarTodosClient = manejadorListarTodosClient;
         this.manejadorListarPorIdClient = manejadorListarPorIdClient;
+        this.manejadorPaginarClient = manejadorPaginarClient;
     }
 
     @GetMapping
     public ResponseEntity<List<Client>> getAll(){
         return new ResponseEntity<>(manejadorListarTodosClient.ejecutar(), HttpStatus.OK);
+    }
+
+    @GetMapping("/paginador")
+    public ResponseEntity<Page<Client>> findAll(Pageable pageable){
+        return new ResponseEntity<>(manejadorPaginarClient.ejecutar(pageable), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

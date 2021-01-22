@@ -1,19 +1,23 @@
 package co.edu.cotecnova.facturacionelectronica.aplicacion.comando;
 
+import co.edu.cotecnova.facturacionelectronica.dominio.modelo.Product;
+
 public class ComandoSaleProduct {
     private int saleProductId;
     private int productId;
     private int saleId;
     private int quantity;
+    private Product product;
 
     public ComandoSaleProduct() {
     }
 
-    public ComandoSaleProduct(int saleProductId, int productId, int saleId, int quantity) {
+    public ComandoSaleProduct(int saleProductId, int productId, int saleId, int quantity, Product product) {
         this.saleProductId = saleProductId;
         this.productId = productId;
         this.saleId = saleId;
         this.quantity = quantity;
+        this.product = product;
     }
 
     public int getSaleProductId() {
@@ -46,5 +50,13 @@ public class ComandoSaleProduct {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

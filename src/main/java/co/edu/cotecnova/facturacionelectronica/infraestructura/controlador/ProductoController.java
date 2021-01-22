@@ -3,6 +3,8 @@ package co.edu.cotecnova.facturacionelectronica.infraestructura.controlador;
 import co.edu.cotecnova.facturacionelectronica.aplicacion.comando.ComandoProduct;
 import co.edu.cotecnova.facturacionelectronica.aplicacion.manejadores.product.*;
 import co.edu.cotecnova.facturacionelectronica.dominio.modelo.Product;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,18 +21,25 @@ public class ProductoController {
     private ManejadorEliminarProduct manejadorEliminarProduct;
     private ManejadorListarTodosProduct manejadorListarTodosProduct;
     private ManejadorListarPorIdProduct manejadorListarPorIdProduct;
+    private ManejadorPaginarProduct manejadorPaginarProduct;
 
-    public ProductoController(ManejadorCrearProduct manejadorCrearProduct, ManejadorActualizarProduct manejadorActualizarProduct, ManejadorEliminarProduct manejadorEliminarProduct, ManejadorListarTodosProduct manejadorListarTodosProduct, ManejadorListarPorIdProduct manejadorListarPorIdProduct) {
+    public ProductoController(ManejadorCrearProduct manejadorCrearProduct, ManejadorActualizarProduct manejadorActualizarProduct, ManejadorEliminarProduct manejadorEliminarProduct, ManejadorListarTodosProduct manejadorListarTodosProduct, ManejadorListarPorIdProduct manejadorListarPorIdProduct, ManejadorPaginarProduct manejadorPaginarProduct) {
         this.manejadorCrearProduct = manejadorCrearProduct;
         this.manejadorActualizarProduct = manejadorActualizarProduct;
         this.manejadorEliminarProduct = manejadorEliminarProduct;
         this.manejadorListarTodosProduct = manejadorListarTodosProduct;
         this.manejadorListarPorIdProduct = manejadorListarPorIdProduct;
+        this.manejadorPaginarProduct = manejadorPaginarProduct;
     }
 
     @GetMapping
     public ResponseEntity<List<Product>> getAll(){
         return new ResponseEntity<>(manejadorListarTodosProduct.ejecutar(), HttpStatus.OK);
+    }
+
+    @GetMapping("/paginador")
+    public ResponseEntity<Page<Product>> findAll(Pageable pageable){
+        return new ResponseEntity<>(manejadorPaginarProduct.ejecutar(pageable), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

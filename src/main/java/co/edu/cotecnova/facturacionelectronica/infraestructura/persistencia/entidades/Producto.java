@@ -3,6 +3,12 @@ package co.edu.cotecnova.facturacionelectronica.infraestructura.persistencia.ent
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+/**
+ * Entidad que mapea de la base de datos la tabla productos
+ * @author Desarrolladores Cotecnova
+ * @version 1.0
+ * @since 2021
+ */
 @Entity
 @Table(name = "productos")
 public class Producto {

@@ -2,6 +2,12 @@ package co.edu.cotecnova.facturacionelectronica.aplicacion.comando;
 
 import java.time.LocalDateTime;
 
+/**
+ * Clase para crear un producto
+ * @author Desarrolladores Cotecnova
+ * @version 1.0
+ * @since 2021
+ */
 public class ComandoProduct {
     private int productId;
     private int code;

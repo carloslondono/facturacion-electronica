@@ -24,7 +24,7 @@ public class SwaggerConfig {
 
     private ApiInfo getApiInfo(){
         return new ApiInfoBuilder()
-                .title("Software de Facturación Electrónica")
+                .title("Software de Facturacion Electronica")
                 .version("1.0")
                 .license("CopyRight")
                 .contact(new Contact("Desarrolladores Cotecnova", "https://www.cotecnova.edu.co", "info@gmail.com"))

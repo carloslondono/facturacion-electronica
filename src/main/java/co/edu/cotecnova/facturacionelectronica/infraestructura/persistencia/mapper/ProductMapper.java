@@ -9,6 +9,12 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
+/**
+ * Interface que permite mapear un producto a un product y viceversa
+ * @author Desarrolladores Cotecnova
+ * @version 1.0
+ * @since 2021
+ */
 @Mapper(componentModel = "spring")
 public interface ProductMapper {
     @Mappings({
